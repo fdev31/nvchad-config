@@ -5,9 +5,11 @@ local M = {}
 M.disabled = {
     v = {
         ["<leader>/"] = "",
+        ["<leader>ra"] = "",
     },
     n = {
         ["<leader>/"] = "",
+        ["<leader>ra"] = "",
     }
 }
 
@@ -67,6 +69,17 @@ M.gitsigns = {
                 package.loaded.gitsigns.diffthis('~')
             end,
             "Show diff",
+        },
+    }
+}
+
+M.lspconfig = {
+    n = {
+        ["<leader>rn"] = {
+            function()
+                require("nvchad_ui.renamer").open()
+            end,
+            "LSP rename",
         },
     }
 }
