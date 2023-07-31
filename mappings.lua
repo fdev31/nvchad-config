@@ -41,6 +41,12 @@ if not lib.isWorkLaptop then
     }
 end
 
+M.general = {
+    n = {
+        ["<leader>n"] = { "<cmd> set rnu! <CR>", "Toggle relative number" }
+    }
+}
+
 M.comment = {
   plugin = true,
 
