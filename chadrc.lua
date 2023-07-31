@@ -7,7 +7,7 @@ local highlights = require "custom.highlights"
 M.ui = {
     theme = "catppuccin",
     theme_toggle = { "everblush", "catppuccin" },
-    transparency = true,
+    -- transparency = true,
 
     hl_override = highlights.override,
     hl_add = highlights.add,
