@@ -3,8 +3,8 @@ local lib = require('custom.lib')
 
 ---@type NvPluginSpec[]
 local plugins = {
-  { 'NoahTheDuke/vim-just', lazy=false },
-  { 'vim-scripts/confluencewiki.vim', lazy=false},
+  { 'NoahTheDuke/vim-just', ft="just" },
+  { 'vim-scripts/confluencewiki.vim', ft="confluencewiki"},
 
   -- Override plugin definition options
 
