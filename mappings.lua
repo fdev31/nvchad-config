@@ -1,4 +1,5 @@
 local lib = require('custom.lib')
+
 ---@type MappingsTable
 local M = {}
 
@@ -25,8 +26,7 @@ if not lib.isWorkLaptop then
             },
             ["<C-b>"] = {
                 function()
-                    local cmp = package.loaded.cmp
-                    cmp.mapping.close()
+                    require('plugins.configs.cmp').mapping["<C-e>"]()
                     return vim.fn['codeium#Complete']()
                 end,
                 "Complete via Codeium",
