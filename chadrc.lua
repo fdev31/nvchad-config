@@ -16,7 +16,11 @@ M.ui = {
     },
     tabufline = {
         lazyload = false,
+    },
+    telescope = {
+        style = "bordered"
     }
+
 }
 
 M.plugins = "custom.plugins"

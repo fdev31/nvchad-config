@@ -1,6 +1,10 @@
 -- vim: ts=2 sw=2:
 local M = {}
 
+M.telescope = {
+  style = "bordered"
+}
+
 M.treesitter = {
   ensure_installed = {
     "bash",
