@@ -16,8 +16,17 @@ M.disabled = {
 if not lib.isWorkLaptop then
     M.codeium = {
         i = {
+            ["<C-g>"] = {
+                function()
+                    return vim.fn['codeium#Accept']()
+                end,
+                "Validate Codeium completion",
+                opts = {expr = true}
+            },
             ["<C-b>"] = {
                 function()
+                    local cmp = package.loaded.cmp
+                    cmp.mapping.close()
                     return vim.fn['codeium#Complete']()
                 end,
                 "Complete via Codeium",

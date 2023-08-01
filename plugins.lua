@@ -68,7 +68,15 @@ local plugins = {
 
 
 if not lib.isWorkLaptop then
-  table.insert(plugins, {'Exafunction/codeium.vim', lazy=false} )
+    vim.g.codeium_manual = true
+    vim.g.codeium_disable_bindings = true
+    -- table.insert(plugins, {"nvim-lua/plenary.nvim", lazy=false})
+    -- table.insert(plugins, {"jcdickinson/codeium.nvim", lazy=false,
+    --     config = function()
+    --         require("codeium").setup()
+    --     end
+    -- })
+    table.insert(plugins, {'Exafunction/codeium.vim', lazy=false} )
 end
 
 return plugins

@@ -1,10 +1,10 @@
 local mapKey = vim.keymap.set
 local autocmd = vim.api.nvim_create_autocmd
 
+
 vim.g.mapleader = "²"
 
 vim.g.vscode_snippets_path = "~/.config/Code/User/snippets/"
-vim.g.codeium_manual = true
 
 vim.cmd.command 'SynID  echo synIDattr(synID(line("."), col("."), 1), "name")'
 
