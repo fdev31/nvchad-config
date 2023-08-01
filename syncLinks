@@ -1,4 +1,4 @@
 #!/bin/sh
 ref_dir=$(pwd)
 pushd ~/.config/nvim/lua/custom
-ln -s "$ref_dir/"* .
+ln -fs "$ref_dir/"* .
