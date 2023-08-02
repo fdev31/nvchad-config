@@ -16,6 +16,7 @@ M.ui = {
     },
     tabufline = {
         lazyload = false,
+        enabled = false,
     },
     telescope = {
         style = "bordered"
