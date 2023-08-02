@@ -20,6 +20,9 @@ M.ui = {
     },
     telescope = {
         style = "bordered"
+    },
+    statusline = {
+        theme="vscode"
     }
 
 }
