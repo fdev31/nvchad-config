@@ -85,6 +85,18 @@ M.comment = {
 
 M.gitsigns = {
     n = {
+        ["<leader>sh"] = {
+            function()
+                package.loaded.gitsigns.stage_hunk()
+            end,
+            "Stage hunk",
+        },
+        ["<leader>uh"] = {
+            function()
+                package.loaded.gitsigns.undo_stage_hunk()
+            end,
+            "Stage hunk",
+        },
         ["<leader>D"] = {
             function()
                 package.loaded.gitsigns.diffthis('~')
