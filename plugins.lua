@@ -1,8 +1,11 @@
+-- vim: ts=2 sw=2:
 local overrides = require("custom.configs.overrides")
 local lib = require('custom.lib')
 
 ---@type NvPluginSpec[]
 local plugins = {
+  { 'fedepujol/move.nvim', lazy=false},
+  {'aklt/plantuml-syntax', ft="plantuml"},
   { 'NoahTheDuke/vim-just', ft="just" },
   { 'vim-scripts/confluencewiki.vim', ft="confluencewiki"},
 

@@ -53,6 +53,12 @@ end
 M.general = {
     n = {
         ["<leader>n"] = { "<cmd> set rnu! <CR>", "Toggle relative number" }
+    },
+    v = {
+        ['<A-down>'] = {':MoveBlock(1)<CR>', "Move down", {noremap=true, silent=true}},
+        ['<A-up>'] = {':MoveBlock(-1)<CR>', "Move up", {noremap=true, silent=true}},
+        ['<A-left>'] = {':MoveHBlock(-1)<CR>', "Move left", {noremap=true, silent=true}},
+        ['<A-right>'] = {':MoveHBlock(1)<CR>', "Move right", {noremap=true, silent=true}},
     }
 }
 
