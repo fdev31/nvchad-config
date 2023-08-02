@@ -99,7 +99,7 @@ M.gitsigns = {
         },
         ["<leader>D"] = {
             function()
-                package.loaded.gitsigns.diffthis('~')
+                package.loaded.gitsigns.diffthis()
             end,
             "Show diff",
         },
