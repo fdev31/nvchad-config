@@ -26,7 +26,8 @@ if not lib.isWorkLaptop then
             },
             ["<C-b>"] = {
                 function()
-                    require('plugins.configs.cmp').mapping["<C-e>"]()
+                    local fn = require('plugins.configs.cmp').mapping["<C-e>"]
+                    pcall(fn)
                     return vim.fn['codeium#Complete']()
                 end,
                 "Complete via Codeium",
