@@ -16,6 +16,7 @@ vim.opt.sw=4
 vim.opt.ts=4
 vim.opt.et=true
 vim.opt.fdm="marker"
+vim.opt.autoread = true
 
 vim.opt.backup = false
 vim.opt.writebackup = false
