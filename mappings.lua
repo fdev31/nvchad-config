@@ -96,7 +96,7 @@ M.gitsigns = {
             function()
                 package.loaded.gitsigns.undo_stage_hunk()
             end,
-            "Stage hunk",
+            "Revert saged hunk",
         },
         ["<leader>D"] = {
             function()
