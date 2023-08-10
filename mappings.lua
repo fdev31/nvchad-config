@@ -3,6 +3,8 @@ local lib = require('custom.lib')
 ---@type MappingsTable
 local M = {}
 
+require('core.mappings').nvterm = nil
+
 M.disabled = {
     v = {
         ["<leader>/"] = "",
