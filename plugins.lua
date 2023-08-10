@@ -4,6 +4,11 @@ local lib = require('custom.lib')
 
 ---@type NvPluginSpec[]
 local plugins = {
+  { 'stevearc/aerial.nvim', lazy=false,
+  config=function()
+      require('aerial').setup()
+      require('telescope').load_extension('aerial')
+    end},
   { 'fedepujol/move.nvim', lazy=false},
   {'aklt/plantuml-syntax', ft="plantuml"},
   { 'NoahTheDuke/vim-just', ft="just" },

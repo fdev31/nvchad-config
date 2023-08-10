@@ -119,6 +119,11 @@ M.lspconfig = {
         },
     }
 }
+M.telescope = {
+    n = {
+        ["<C-,>"] = { function() require("telescope").extensions.aerial.aerial() end, "Toggle code outline window" },
+    }
+}
 
 -- more keybinds!
 
