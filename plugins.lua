@@ -8,6 +8,7 @@ local plugins = {
   {'aklt/plantuml-syntax', ft="plantuml"},
   { 'NoahTheDuke/vim-just', ft="just" },
   { 'vim-scripts/confluencewiki.vim', ft="confluencewiki"},
+  { "NvChad/nvterm", enabled = false },
 
   -- Override plugin definition options
 
