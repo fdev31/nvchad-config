@@ -4,6 +4,32 @@ local lib = require('custom.lib')
 
 ---@type NvPluginSpec[]
 local plugins = {
+  {'HiPhish/rainbow-delimiters.nvim', lazy=false},
+  -- highlights arguments
+  {'m-demare/hlargs.nvim',
+    lazy=false,
+  config=function()
+      local hlargs = require("hlargs")
+      hlargs.setup()
+      hlargs.enable()
+    end
+  },
+  -- highlits TODO, FIXME, etc...
+  {'folke/todo-comments.nvim', lazy=false,
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config=function()
+      require("todo-comments").setup()
+    end
+  },
+  {'Wansmer/treesj',
+    keys = { '<space>m'},
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    config = function()
+      require('treesj').setup({
+        max_join_length = 300,
+        })
+    end
+  },
   { 'stevearc/aerial.nvim', lazy=false,
   config=function()
       require('aerial').setup()
