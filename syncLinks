@@ -1,4 +1,9 @@
 #!/bin/sh
 ref_dir=$(pwd)
-pushd ~/.config/nvim/lua/custom
+custom_dir="$HOME/.config/nvim/lua/custom"
+if [ ! -d "${custom_dir}" ]; then
+  echo "Create ${custom_dir} before running this script"
+  exit 0
+fi
+pushd $custom_dir
 ln -fs "$ref_dir/"* .
