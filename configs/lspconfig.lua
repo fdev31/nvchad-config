@@ -7,7 +7,7 @@ local servers = { "pylsp", "html", "cssls", "clangd", "tailwindcss", "tsserver",
 
 
 for _, lsp in ipairs(servers) do
-    if not lsp == "volar" then
+    if lsp ~= "volar" then
         lspconfig[lsp].setup({
             on_attach = on_attach,
             capabilities = capabilities,
