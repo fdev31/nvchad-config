@@ -8,6 +8,7 @@ M.telescope = {
 M.treesitter = {
   ensure_installed = {
     "bash",
+    "vue",
     "c",
     "css",
     "python",
@@ -36,7 +37,6 @@ M.mason = {
     -- web dev stuff
     "css-lsp",
     "html-lsp",
-    "typescript-language-server",
     "deno",
     "prettier",
 
