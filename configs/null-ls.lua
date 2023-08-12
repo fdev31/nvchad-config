@@ -13,7 +13,7 @@ local sources = {
 	b.formatting.prettier.with({ filetypes = { "html", "markdown", "css" } }), -- so prettier works only on these filetypes
 	-- python
 	b.diagnostics.mypy,
-	b.diagnostics.pylint,
+	-- b.diagnostics.pylint,
 	b.diagnostics.pylama,
 
 	b.formatting.black,
