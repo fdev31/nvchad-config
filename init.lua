@@ -19,6 +19,7 @@ vim.opt.fdm="marker"
 vim.opt.autoread = true
 
 vim.opt.backup = false
+vim.opt.swapfile = false
 vim.opt.writebackup = false
 
 -- neovide {{{
