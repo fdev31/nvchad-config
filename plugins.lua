@@ -2,8 +2,12 @@
 local overrides = require("custom.configs.overrides")
 local lib = require("custom.lib")
 
+-- All NvChad plugins are lazy-loaded by default
+-- For a plugin to be loaded, you will need to set either `ft`, `cmd`, `keys`, `event`, or set `lazy = false`
+--
 ---@type NvPluginSpec[]
 local plugins = {
+	-- Rainbow {{{
 	{
 		"HiPhish/rainbow-delimiters.nvim",
 		lazy = false,
@@ -30,8 +34,8 @@ local plugins = {
 				},
 			}
 		end,
-	},
-	-- highlights arguments
+	}, -- }}}
+	-- highlights arguments {{{
 	{
 		"m-demare/hlargs.nvim",
 		lazy = false,
@@ -40,8 +44,8 @@ local plugins = {
 			hlargs.setup()
 			hlargs.enable()
 		end,
-	},
-	-- highlits TODO, FIXME, etc...
+	}, --- }}}
+	-- highlights TODO, FIXME, etc... {{{
 	{
 		"folke/todo-comments.nvim",
 		lazy = false,
@@ -49,8 +53,8 @@ local plugins = {
 		config = function()
 			require("todo-comments").setup()
 		end,
-	},
-	{
+	}, -- }}}
+	{ -- split / join code {{{
 		"Wansmer/treesj",
 		keys = { "<space>m" },
 		dependencies = { "nvim-treesitter/nvim-treesitter" },
@@ -59,15 +63,15 @@ local plugins = {
 				max_join_length = 300,
 			})
 		end,
-	},
-	{
+	}, --}}}
+	{ -- Navigate code (aerial) {{{
 		"stevearc/aerial.nvim",
 		lazy = false,
 		config = function()
 			require("aerial").setup()
 			require("telescope").load_extension("aerial")
 		end,
-	},
+	}, -- }}}
 	{ "fedepujol/move.nvim", lazy = false },
 	{ "aklt/plantuml-syntax", ft = "plantuml" },
 	{ "NoahTheDuke/vim-just", ft = "just" },
@@ -93,7 +97,7 @@ local plugins = {
 		end, -- Override to setup mason-lspconfig
 	},
 
-	-- override plugin configs
+	-- override plugin configs {{{
 	{
 		"williamboman/mason.nvim",
 		opts = overrides.mason,
@@ -107,7 +111,7 @@ local plugins = {
 	{
 		"nvim-tree/nvim-tree.lua",
 		opts = overrides.nvimtree,
-	},
+	}, -- }}}
 
 	-- Install a plugin
 	{
@@ -117,31 +121,11 @@ local plugins = {
 			require("better_escape").setup()
 		end,
 	},
-
-	-- To make a plugin not be loaded
-	-- {
-	--   "NvChad/nvim-colorizer.lua",
-	--   enabled = false
-	-- },
-
-	-- All NvChad plugins are lazy-loaded by default
-	-- For a plugin to be loaded, you will need to set either `ft`, `cmd`, `keys`, `event`, or set `lazy = false`
-	-- If you want a plugin to load on startup, add `lazy = false` to a plugin spec, for example
-	-- {
-	--   "mg979/vim-visual-multi",
-	--   lazy = false,
-	-- }
 }
 
 if not lib.isWorkLaptop then
 	vim.g.codeium_manual = true
 	vim.g.codeium_disable_bindings = true
-	-- table.insert(plugins, {"nvim-lua/plenary.nvim", lazy=false})
-	-- table.insert(plugins, {"jcdickinson/codeium.nvim", lazy=false,
-	--     config = function()
-	--         require("codeium").setup()
-	--     end
-	-- })
 	table.insert(plugins, { "Exafunction/codeium.vim", lazy = false })
 end
 

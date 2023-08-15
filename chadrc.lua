@@ -2,15 +2,29 @@
 local M = {}
 
 -- Path to overriding theme and highlights files
-local highlights = require("custom.highlights")
 
 M.ui = {
-	theme = "github_dark",
-	theme_toggle = { "github_dark", "bearded-arc" },
-	-- transparency = true,
+	theme = "catppuccin",
+	theme_toggle = { "catppuccin", "bearded-arc" },
+	transparency = true,
 
-	hl_override = highlights.override,
-	hl_add = highlights.add,
+    -- To find any highlight groups: "<cmd> Telescope highlights"
+    -- Each highlight group can take a table with variables fg, bg, bold, italic, etc
+    -- base30 variable names can also be used as colors
+	hl_override = {
+        gitcommitComment = {
+            fg = "light_grey",
+            italic = true
+        },
+        Comment = {
+            bg = "darker_black",
+            fg = "light_grey",
+            italic = true
+        },
+    },
+	hl_add = {
+        NvimTreeOpenedFolderName = { fg = "green", bold = true },
+    },
 	cmp = {
 		style = "atom_colored",
 	},
