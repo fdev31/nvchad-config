@@ -85,6 +85,21 @@ M.comment = {
     },
   },
 }
+-- for vim diff / mergetool {{{
+M.general = {
+    n = {
+        ["dr"] = {
+            "<cmd>diffget REMOTE<CR>", "get remote"
+        },
+        ["dl"] = {
+            "<cmd>diffget LOCAL<CR>", "get local"
+        },
+        ["db"] = {
+            "<cmd>diffget BASE<CR>", "get base"
+        },
+    }
+}
+-- }}}
 
 M.gitsigns = {
     n = {
