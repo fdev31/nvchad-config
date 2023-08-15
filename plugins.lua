@@ -2,13 +2,38 @@
 local overrides = require("custom.configs.overrides")
 local lib = require('custom.lib')
 
+
 ---@type NvPluginSpec[]
 local plugins = {
-  {'HiPhish/rainbow-delimiters.nvim', lazy=false},
+  {'HiPhish/rainbow-delimiters.nvim', lazy=false,
+    config = function()
+      local rainbow_delimiters = require('rainbow-delimiters')
+
+
+      vim.g.rainbow_delimiters = {
+        strategy = {
+          [''] = rainbow_delimiters.strategy['global'],
+          vim = rainbow_delimiters.strategy['local'],
+        },
+        query = {
+          [''] = 'rainbow-delimiters',
+          lua = 'rainbow-blocks',
+        },
+        highlight = {
+          'RainbowDelimiterRed',
+          'RainbowDelimiterYellow',
+          'RainbowDelimiterBlue',
+          'RainbowDelimiterOrange',
+          'RainbowDelimiterGreen',
+          'RainbowDelimiterViolet',
+          'RainbowDelimiterCyan',
+        },
+      }
+    end},
   -- highlights arguments
   {'m-demare/hlargs.nvim',
     lazy=false,
-  config=function()
+    config=function()
       local hlargs = require("hlargs")
       hlargs.setup()
       hlargs.enable()
