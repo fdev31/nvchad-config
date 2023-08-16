@@ -5,8 +5,6 @@ vim.g.mapleader = "²"
 
 vim.g.vscode_snippets_path = "~/.config/Code/User/snippets/"
 
-vim.cmd.command('SynID  echo synIDattr(synID(line("."), col("."), 1), "name")')
-
 vim.opt.wmh = 0
 vim.opt.guifont = "Fira Code,Noto Color Emoji:h11:#e-subpixelantialias"
 vim.opt.clipboard = "unnamedplus"
