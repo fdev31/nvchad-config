@@ -16,6 +16,10 @@ M.ui = {
             fg = "light_grey",
             italic = true
         },
+        Folded = {
+            fg = "dark_purple",
+            italic = true
+        },
         Comment = {
             bg = "darker_black",
             fg = "light_grey",
