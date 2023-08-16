@@ -3,7 +3,7 @@ local capabilities = require("plugins.configs.lspconfig").capabilities
 
 local lspconfig = require("lspconfig")
 
-local servers = { "pylsp", "html", "cssls", "clangd", "tailwindcss", "tsserver", "volar", "eslint" }
+local servers = { "pylsp", "html", "cssls", "clangd", "tailwindcss", "tsserver", "volar", "eslint", "lua_ls" }
 
 for _, lsp in ipairs(servers) do
 	if lsp ~= "volar" then
