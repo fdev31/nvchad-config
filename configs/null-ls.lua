@@ -16,8 +16,8 @@ local sources = {
 	-- b.diagnostics.pylint,
 	b.diagnostics.pylama,
 
-	b.formatting.black,
-	b.diagnostics.flake8,
+	b.formatting.black.with({ extra_args = { "--line-length", "160" } }),
+	b.diagnostics.flake8.with({ extra_args = { "--max-line-length", "160" } }),
 	-- generic code
 	b.code_actions.gitsigns,
 	b.code_actions.refactoring,
