@@ -104,11 +104,7 @@ if lib.isGitMergetool then
 			["dl"] = {
 				"<cmd>diffget LOCAL<CR>",
 				"get local",
-			},
-			["db"] = {
-				"<cmd>diffget BASE<CR>",
-				"get base",
-			},
+			}
 		},
 	}
 end
