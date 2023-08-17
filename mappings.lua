@@ -93,7 +93,7 @@ local M = {
 -- Conditional:
 
 -- vim diff {{{
-if vim.opt.diff:get() then
+if lib.isGitMergetool then
 	M.diffmode = {
 		plugin = false,
 		n = {
