@@ -12,4 +12,6 @@ end
 
 exported.isWorkLaptop = file_exists("/home/fab/liberty/code")
 
+exported.isGitMergetool = vim.env.TEXTDOMAIN == "git" or vim.env.GIT_PREFIX ~= nil
+
 return exported
