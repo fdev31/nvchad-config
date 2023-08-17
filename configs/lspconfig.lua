@@ -1,9 +1,15 @@
+local lib = require("custom.lib")
+
 local on_attach = require("plugins.configs.lspconfig").on_attach
 local capabilities = require("plugins.configs.lspconfig").capabilities
 
 local lspconfig = require("lspconfig")
 
-local servers = { "pylsp", "html", "cssls", "clangd", "tailwindcss", "tsserver", "volar", "eslint", "lua_ls" }
+local servers = { "pylsp", "html", "cssls", "clangd", "tsserver", "volar", "eslint", "lua_ls" }
+
+if not lib.isWorkLaptop then
+    table.insert(servers, "tailwindcss")
+end
 
 for _, lsp in ipairs(servers) do
 	if lsp ~= "volar" then
