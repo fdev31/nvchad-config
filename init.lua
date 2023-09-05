@@ -23,7 +23,7 @@ vim.opt.writebackup = false
 if vim.g.neovide then
 	mapKey("!", "<S-Insert>", "<C-R>+") -- allow Shit+Insert on the prompt
 
-	vim.g.neovide_transparency = 0.95
+	vim.g.neovide_transparency = 0.7
 	vim.g.neovide_cursor_vfx_mode = "railgun"
 	vim.g.neovide_scale_factor = 0.8
 	-- Dynamic Scale
