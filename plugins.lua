@@ -7,6 +7,130 @@ local lib = require("custom.lib")
 --
 ---@type NvPluginSpec[]
 local plugins = {
+	{
+		"mfussenegger/nvim-dap",
+		lazy = false,
+		config = function()
+			local dap = require("dap")
+			vim.fn.sign_define("DapBreakpoint", { text = "🟥", texthl = "", linehl = "", numhl = "" })
+
+			dap.defaults.fallback.force_external_terminal = true
+			dap.defaults.fallback.external_terminal = {
+				command = "/usr/bin/kitty",
+				args = { "-e" },
+			}
+			dap.adapters["pwa-node"] = {
+				type = "server",
+			}
+			dap.adapters.bashdb = {
+				type = "executable",
+				command = vim.fn.stdpath("data") .. "/mason/packages/bash-debug-adapter/bash-debug-adapter",
+				name = "bashdb",
+				-- args = {vim.fn.expand("%")}
+			}
+			dap.adapters.python = function(cb, config)
+				if config.request == "attach" then
+					---@diagnostic disable-next-line: undefined-field
+					local port = (config.connect or config).port
+					---@diagnostic disable-next-line: undefined-field
+					local host = (config.connect or config).host or "127.0.0.1"
+					cb({
+						type = "server",
+						port = assert(port, "`connect.port` is required for a python `attach` configuration"),
+						host = host,
+						options = {
+							source_filetype = "python",
+						},
+					})
+				else
+					cb({
+						type = "executable",
+						command = "/bin/python",
+						args = { "-m", "debugpy.adapter" },
+						options = {
+							source_filetype = "python",
+						},
+					})
+				end
+			end
+			dap.configurations.javascript = {
+				{
+					name = "Attach to process",
+					type = "pwa-node",
+					request = "attach",
+					address = "192.168.100.42",
+					cwd = "${workspaceFolder}",
+				},
+			}
+			dap.configurations.sh = {
+				{
+					type = "bashdb",
+					request = "launch",
+					name = "Launch file",
+					showDebugOutput = true,
+					trace = true,
+					file = "${file}",
+					program = "${file}",
+					cwd = "${workspaceFolder}",
+					args = {},
+					env = {},
+					terminalKind = "integrated",
+					runInTerminal = false,
+					pathCat = "cat",
+					pathBash = "/bin/bash",
+					pathMkfifo = "mkfifo",
+					pathPkill = "pkill",
+					pathBashdb = vim.fn.stdpath("data")
+						.. "/mason/packages/bash-debug-adapter/extension/bashdb_dir/bashdb",
+					pathBashdbLib = vim.fn.stdpath("data") .. "/mason/packages/bash-debug-adapter/extension/bashdb_dir",
+				},
+			}
+			dap.configurations.python = {
+				{
+					-- The first three options are required by nvim-dap
+					type = "python", -- the type here established the link to the adapter definition: `dap.adapters.python`
+					request = "launch",
+					name = "Launch file",
+
+					-- Options below are for debugpy, see https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings for supported options
+
+					program = "${file}", -- This configuration will launch the current file if used.
+					pythonPath = function()
+						-- debugpy supports launching an application with a different interpreter then the one used to launch debugpy itself.
+						-- The code below looks for a `venv` or `.venv` folder in the current directly and uses the python within.
+						-- You could adapt this - to for example use the `VIRTUAL_ENV` environment variable.
+						local cwd = vim.fn.getcwd()
+						if vim.fn.executable(cwd .. "/venv/bin/python") == 1 then
+							return cwd .. "/venv/bin/python"
+						elseif vim.fn.executable(cwd .. "/.venv/bin/python") == 1 then
+							return cwd .. "/.venv/bin/python"
+						else
+							return "/usr/bin/python"
+						end
+					end,
+				},
+			}
+		end,
+	},
+	{
+		"mxsdev/nvim-dap-vscode-js",
+		requires = { "mfussenegger/nvim-dap" },
+		ft = "javascript",
+		config = function()
+			require("dap-vscode-js").setup({
+				debugger_path = "/home/fab/dev/microsoft/vscode-js-debug",
+				adapters = { "pwa-node", "pwa-chrome", "pwa-msedge", "node-terminal", "pwa-extensionHost" }, -- which adapters to register in nvim-dap
+			})
+		end,
+	},
+	{
+		"rcarriga/nvim-dap-ui",
+		requires = { "mfussenegger/nvim-dap" },
+		lazy = false,
+		config = function()
+			require("dapui").setup()
+		end,
+	},
 	-- Rainbow {{{
 	{
 		"HiPhish/rainbow-delimiters.nvim",

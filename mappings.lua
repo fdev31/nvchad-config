@@ -26,6 +26,24 @@ local M = {
 			["<A-right>"] = { ":MoveHBlock(1)<CR>", "Move right", { noremap = true, silent = true } },
 		},
 	}, -- }}}
+	dap = { --- {{{
+		n = {
+			["<leader>i"] = {
+				function()
+					require("dapui").toggle()
+				end,
+				"Toggle debugger UI",
+				{ noremap = true, silent = true },
+			},
+			["<leader>b"] = {
+				function()
+					require("dap").toggle_breakpoint()
+				end,
+				"Toggle debugger breakpoint",
+				{ noremap = true, silent = true },
+			},
+		},
+	}, -- }}}
 	comment = { -- {{{
 		plugin = true,
 
