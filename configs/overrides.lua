@@ -43,6 +43,8 @@ M.mason = {
 		-- c/cpp stuff
 		"clangd",
 		"clang-format",
+
+		"bash-debug-adapter",
 	},
 }
 
