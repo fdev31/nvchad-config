@@ -4,8 +4,8 @@ local M = {}
 -- Path to overriding theme and highlights files
 
 M.ui = {
-	theme = "catppuccin",
-	theme_toggle = { "catppuccin", "bearded-arc" },
+	theme = "chadracula",
+	theme_toggle = { "chadracula", "bearded-arc" },
 	transparency = true,
 
     -- To find any highlight groups: "<cmd> Telescope highlights"
