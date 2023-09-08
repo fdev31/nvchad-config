@@ -7,27 +7,29 @@ local lib = require("custom.lib")
 --
 ---@type NvPluginSpec[]
 local plugins = {
+	-- DAP {{{
 	{
 		"mfussenegger/nvim-dap",
-		lazy = false,
+    ft = {"python", "javascript", "sh"},
 		config = function()
 			local dap = require("dap")
-			vim.fn.sign_define("DapBreakpoint", { text = "🟥", texthl = "", linehl = "", numhl = "" })
+			vim.fn.sign_define("DapBreakpoint", { text = "🚩", texthl = "", linehl = "", numhl = "" })
 
 			dap.defaults.fallback.force_external_terminal = true
 			dap.defaults.fallback.external_terminal = {
 				command = "/usr/bin/kitty",
 				args = { "-e" },
 			}
+      -- Adapters {{{
 			dap.adapters["pwa-node"] = {
 				type = "server",
 			}
-			dap.adapters.bashdb = {
-				type = "executable",
-				command = vim.fn.stdpath("data") .. "/mason/packages/bash-debug-adapter/bash-debug-adapter",
-				name = "bashdb",
-				-- args = {vim.fn.expand("%")}
-			}
+      dap.adapters.bashdb = {
+        type = "executable",
+        command = vim.fn.stdpath("data") .. "/mason/packages/bash-debug-adapter/bash-debug-adapter",
+        name = "bashdb",
+      } -- }}}
+      -- Configurations {{{
 			dap.configurations.javascript = {
 				{
 					name = "Attach to process",
@@ -59,13 +61,14 @@ local plugins = {
 						.. "/mason/packages/bash-debug-adapter/extension/bashdb_dir/bashdb",
 					pathBashdbLib = vim.fn.stdpath("data") .. "/mason/packages/bash-debug-adapter/extension/bashdb_dir",
 				},
+        --- }}}
 			}
 		end,
 	},
 	{
 		"mfussenegger/nvim-dap-python",
 		requires = { "rcarriga/nvim-dap-ui" },
-		ft = "python",
+    ft = {"python", "javascript", "sh"},
 		config = function()
 			require("dap-python").setup()
 		end,
@@ -88,7 +91,7 @@ local plugins = {
 		config = function()
 			require("dapui").setup()
 		end,
-	},
+	}, -- }}}
 	-- Rainbow {{{
 	{
 		"HiPhish/rainbow-delimiters.nvim",
@@ -136,7 +139,8 @@ local plugins = {
 			require("todo-comments").setup()
 		end,
 	}, -- }}}
-	{ -- split / join code {{{
+	-- split / join code {{{
+	{
 		"Wansmer/treesj",
 		keys = { "<space>m" },
 		dependencies = { "nvim-treesitter/nvim-treesitter" },
@@ -146,7 +150,8 @@ local plugins = {
 			})
 		end,
 	}, --}}}
-	{ -- Navigate code (aerial) {{{
+	-- Navigate code (aerial) {{{
+	{
 		"stevearc/aerial.nvim",
 		lazy = false,
 		config = function()
