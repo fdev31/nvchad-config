@@ -63,6 +63,14 @@ autocmd({ "BufNewFile", "BufRead" }, {
 })
 
 autocmd({ "BufNewFile", "BufRead" }, {
+	pattern = "mymenu_commands",
+	callback = function()
+		set_spell()
+		vim.bo.filetype = "menucommand"
+	end,
+})
+
+autocmd({ "BufNewFile", "BufRead" }, {
 	pattern = "*.wiki",
 	callback = function()
 		set_spell()

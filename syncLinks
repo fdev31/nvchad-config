@@ -1,9 +1,20 @@
 #!/bin/sh
+link="ln -fs"
+nvim_config="$HOME/.config/nvim/"
 ref_dir=$(pwd)
-custom_dir="$HOME/.config/nvim/lua/custom"
+
+# Link syntax
+
+pushd $nvim_config
+$link "$ref_dir/syntax" .
+popd
+
+# Link nvchad items
+custom_dir="${nvim_config}/lua/custom"
 if [ ! -d "${custom_dir}" ]; then
   echo "Create ${custom_dir} before running this script"
   exit 0
 fi
 pushd $custom_dir
-ln -fs "$ref_dir/"* .
+$link "$ref_dir/"*.lua .
+$link "$ref_dir/"configs .
