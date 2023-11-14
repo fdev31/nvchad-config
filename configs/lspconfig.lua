@@ -43,7 +43,7 @@ lspconfig.pylsp.setup({
 				autopep8 = { enabled = true },
 				yapf = { enabled = false },
 				-- linter options
-				pylint = { enabled = false },
+				pylint = { enabled = true },
 				pyflakes = { enabled = true },
 				pycodestyle = { enabled = true },
 				-- type checker
