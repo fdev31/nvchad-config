@@ -40,7 +40,7 @@ M.ui = {
 		style = "bordered",
 	},
 	statusline = {
-		theme = "vscode",
+		theme = "vscode_colored",
 	},
 }
 
