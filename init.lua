@@ -49,7 +49,7 @@ end
 -- Auto resize panes when resizing nvim window {{{
 autocmd("VimResized", {
 	pattern = "*",
-	command = "tabdo wincmd =",
+	command = "wincmd =",
 }) --- }}}
 -- Hooks by File types {{{
 local function set_spell()
