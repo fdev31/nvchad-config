@@ -10,7 +10,7 @@ local plugins = {
 	-- DAP {{{
 	{
 		"mfussenegger/nvim-dap",
-    ft = {"python", "javascript", "sh"},
+		ft = { "python", "javascript", "sh" },
 		config = function()
 			local dap = require("dap")
 			vim.fn.sign_define("DapBreakpoint", { text = "🚩", texthl = "", linehl = "", numhl = "" })
@@ -20,16 +20,16 @@ local plugins = {
 				command = "/usr/bin/kitty",
 				args = { "-e" },
 			}
-      -- Adapters {{{
+			-- Adapters {{{
 			dap.adapters["pwa-node"] = {
 				type = "server",
 			}
-      dap.adapters.bashdb = {
-        type = "executable",
-        command = vim.fn.stdpath("data") .. "/mason/packages/bash-debug-adapter/bash-debug-adapter",
-        name = "bashdb",
-      } -- }}}
-      -- Configurations {{{
+			dap.adapters.bashdb = {
+				type = "executable",
+				command = vim.fn.stdpath("data") .. "/mason/packages/bash-debug-adapter/bash-debug-adapter",
+				name = "bashdb",
+			} -- }}}
+			-- Configurations {{{
 			dap.configurations.javascript = {
 				{
 					name = "Attach to process",
@@ -61,14 +61,14 @@ local plugins = {
 						.. "/mason/packages/bash-debug-adapter/extension/bashdb_dir/bashdb",
 					pathBashdbLib = vim.fn.stdpath("data") .. "/mason/packages/bash-debug-adapter/extension/bashdb_dir",
 				},
-        --- }}}
+				--- }}}
 			}
 		end,
 	},
 	{
 		"mfussenegger/nvim-dap-python",
 		requires = { "rcarriga/nvim-dap-ui" },
-    ft = {"python", "javascript", "sh"},
+		ft = { "python", "javascript", "sh" },
 		config = function()
 			require("dap-python").setup()
 		end,
