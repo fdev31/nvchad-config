@@ -57,9 +57,16 @@ local function set_spell()
 	vim.opt_local.spelllang = "en_us"
 end
 
+for _, ext in ipairs({ "rst", "md", "txt" }) do
+	autocmd({ "BufNewFile", "BufRead" }, {
+		pattern = "*." .. ext,
+		callback = set_spell,
+	})
+end
+
 autocmd({ "BufNewFile", "BufRead" }, {
-	pattern = "*.rst",
-	callback = set_spell,
+    pattern = "COMMIT_EDITMSG",
+    callback = set_spell,
 })
 
 autocmd({ "BufNewFile", "BufRead" }, {
