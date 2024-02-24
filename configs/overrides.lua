@@ -8,8 +8,10 @@ M.telescope = {
 M.treesitter = {
 	ensure_installed = {
 		"bash",
+		"toml",
 		"vue",
 		"c",
+		"cpp",
 		"css",
 		"python",
 		"html",
@@ -26,6 +28,15 @@ M.treesitter = {
 		--   "python"
 		-- },
 	},
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = '<CR>',
+      scope_incremental = '<CR>',
+      node_incremental = '<TAB>',
+      node_decremental = '<S-TAB>',
+    },
+  },
 }
 
 M.mason = {
@@ -37,7 +48,8 @@ M.mason = {
 		-- web dev stuff
 		"css-lsp",
 		"html-lsp",
-		"deno",
+    -- "deno",
+    "typescript-language-server",
 		"prettier",
 
 		-- c/cpp stuff
